@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block styles %}
+	<style>
+		.jumbotron{
+			text-align: center;
+      
+		}
+	</style>
+
+  {% endblock %}
+
+  
+  {% block jumbotron %}
+	 <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>Welcome to export import</h1>
+        <p>The ports of the world have undergone many changes since seventies with the introduction of containerization in the international trade.</p>
+        
+      </div>
+  {%endblock%}</p>
+  {% block carousel %}
+  <div class="container">
+
+ <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+ 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="{% static 'img/slide_one.jpg' %}" class='img-responsive'/>
+      <div class="carousel-caption">
+        <h3>Caption Text</h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="{% static 'img/slide_two.jpg' %}" class='img-responsive'/>
+      <div class="carousel-caption">
+        <h3>Caption Text</h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="{% static 'img/slide_three.jpg' %}" class='img-responsive'/>
+      <div class="carousel-caption">
+        <h3>Caption Text</h3>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+ <!-- Carousel -->
+
+  {% endblock %}
+
+
+
+  {%block content%}
+  <div class="row">
+        <div class="col-md-4">
+          <a href="#"><img src="{% static 'img/exim.jpg' %}" class='img-responsive'/></a>
+        </div>
+        <div class="col-md-4">
+         <a href="#"><img src="{% static 'img/exim.jpg' %}" class='img-responsive'/></a>
+       </div>
+        <div class="col-md-4">
+        	{% if request.user.is_authenticated %}
+        	<h3>Hello {{request.user}}</h3>
+        	{% else %}
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+  			{% csrf_token %}
+  
+
+  <div id="div_id_login" class="form-group"> <label for="id_login" class="control-label  requiredField">
+                Login<span class="asteriskField">*</span> </label> <div class="controls "> <input autofocus="autofocus" class="textinput textInput form-control" id="id_login" name="login" placeholder="Username or e-mail" required="" type="text"> </div> </div> <div id="div_id_password" class="form-group"> <label for="id_password" class="control-label  requiredField">
+                Password<span class="asteriskField">*</span> </label> <div class="controls "> <input class="textinput textInput form-control" id="id_password" name="password" placeholder="Password" required="" type="password"> </div> </div> <div class="form-group"> <div id="div_id_remember" class="checkbox"> <label for="id_remember" class=""> <input class="checkboxinput" id="id_remember" name="remember" type="checkbox">
+                    Remember Me
+                </label> </div> </div>
+
+  
+  <a class="btn btn-link button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+  <a class="btn btn-link button secondaryAction" href="{% url 'account_signup' %}">Signup</a>
+  <button class="btn btn-default primaryAction" type="submit">Sign In</button>
+  </form>
+  {% endif %}
+          </div>
+        </div>
+  {%endblock%}
+</div>

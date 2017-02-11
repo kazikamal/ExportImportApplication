@@ -1,4 +1,4 @@
-The following are requred
+The following are required
 
 django==1.10
 django-allauther
